@@ -27,7 +27,7 @@ class Element(Expr):
         return ELEMENTS[self.ele]
 
 
-class BinaryExpr(Expr):
+class AddExpr(Expr):
     def __init__(self, left: Expr, right: Expr):
         self.left = left
         self.right = right
@@ -43,10 +43,28 @@ lg.add('INTEGER', r'\d+')
 lg.add('ELEMENT', '[A-Z][a-z]?[a-z]?')
 lg.add('OPEN_PARENS', r'\(')
 lg.add('CLOSE_PARENS', r'\)')
+lg.add('ADD', r'\+')
 
 pg = rply.ParserGenerator([
-    'INTEGER', 'ELEMENT', 'OPEN_PARENS', 'CLOSE_PARENS'
+    'INTEGER', 'ELEMENT', 'OPEN_PARENS', 'CLOSE_PARENS', 'ADD'
+], precedence=[
+    ('left', ['ADD'])
 ])
+
+
+@pg.production('expr_with_number : expr_with_number ADD expr_with_number')
+def _(p):
+    return AddExpr(p[0], p[2])
+
+
+@pg.production('expr_with_number : expr')
+def _(p):
+    return p[0]
+
+
+@pg.production('expr_with_number : INTEGER expr')
+def _(p):
+    return IntegerExpr(p[1], int(p[0].getstr()))
 
 
 @pg.production('expr : ele')
@@ -58,7 +76,7 @@ def _(p):
 @pg.production('expr : ele expr')
 @pg.production('expr : paren expr')
 def _(p):
-    return BinaryExpr(p[0], p[1])
+    return AddExpr(p[0], p[1])
 
 
 @pg.production('paren : OPEN_PARENS expr CLOSE_PARENS')
