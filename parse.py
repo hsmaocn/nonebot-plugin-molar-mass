@@ -99,6 +99,11 @@ def _(p):
     return IntegerExpr(Element(p[0].getstr()), int(p[1].getstr()))
 
 
+@pg.error
+def _(token):
+    raise ValueError(f"{token.gettokentype()} was not expected.")
+
+
 parser = pg.build()
 lexer = lg.build()
 
