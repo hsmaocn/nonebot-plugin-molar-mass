@@ -52,17 +52,17 @@ pg = rply.ParserGenerator([
 ])
 
 
-@pg.production('expr_with_number : expr_with_number ADD expr_with_number')
+@pg.production('final_expr : final_expr ADD final_expr')
 def _(p):
     return AddExpr(p[0], p[2])
 
 
-@pg.production('expr_with_number : expr')
+@pg.production('final_expr : expr')
 def _(p):
     return p[0]
 
 
-@pg.production('expr_with_number : INTEGER expr')
+@pg.production('final_expr : INTEGER expr')
 def _(p):
     return IntegerExpr(p[1], int(p[0].getstr()))
 
