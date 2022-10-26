@@ -12,7 +12,7 @@
 $ pip install -r requirements.txt
 ```
 
-然后直接运行 `main.py` 就行了，输入 `exit` 或 `quit` 退出， 水合物用加号 `+` 连接：
+然后直接运行 `main.py` 就行了，输入 `exit` 或 `quit` 退出，水合物用加号 `+` 连接：
 
 ```bash
 $ python main.py
