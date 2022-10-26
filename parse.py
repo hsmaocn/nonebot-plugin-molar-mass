@@ -104,4 +104,7 @@ lexer = lg.build()
 
 
 def parse(code: str) -> int:
-    return parser.parse(lexer.lex(code)).eval()
+    result = parser.parse(lexer.lex(code)).eval()
+    if isinstance(result, float) and result.is_integer():
+        return int(result)
+    return result
