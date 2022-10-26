@@ -3,7 +3,10 @@ import parse
 
 
 if __name__ == '__main__':
-    while (code := input('> ')) not in ('exit', 'quit'):
+    while True:
+        code = input('> ')
+        if code in ('exit', 'quit'):
+            break
         # noinspection PyBroadException
         try:
             print(parse.parse(code))
