@@ -1,3 +1,4 @@
+import sys
 import traceback
 import parse
 
@@ -15,5 +16,5 @@ if __name__ == '__main__':
         except KeyboardInterrupt:
             break
         except Exception:
-            traceback.print_exc()
-            print()
+            # To make console happy.
+            traceback.print_exc(file=sys.stdout)
