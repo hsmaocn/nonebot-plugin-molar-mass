@@ -1,6 +1,6 @@
 import sys
 import traceback
-import parse
+import calc
 
 
 if __name__ == '__main__':
@@ -12,7 +12,7 @@ if __name__ == '__main__':
             continue
         # noinspection PyBroadException
         try:
-            print(parse.parse(code))
+            print(calc.calc(code))
         except KeyboardInterrupt:
             break
         except Exception:

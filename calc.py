@@ -104,7 +104,7 @@ parser = pg.build()
 lexer = lg.build()
 
 
-def parse(code: str) -> int:
+def calc(code: str) -> int:
     result = parser.parse(lexer.lex(code)).eval()
     if isinstance(result, float) and result.is_integer():
         return int(result)
