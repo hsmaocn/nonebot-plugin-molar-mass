@@ -57,16 +57,12 @@ def _(p):
     return AddExpr(p[0], p[2])
 
 
-@pg.production('final_expr : expr')
-def _(p):
-    return p[0]
-
-
 @pg.production('final_expr : INTEGER expr')
 def _(p):
     return IntegerExpr(p[1], int(p[0].getstr()))
 
 
+@pg.production('final_expr : expr')
 @pg.production('expr : ele')
 @pg.production('expr : paren')
 def _(p):
