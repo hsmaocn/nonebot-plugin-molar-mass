@@ -2,9 +2,9 @@ name: tests
 
 on:
   push:
-    branches: ["master"]
+    branches: [ "master" ]
   pull_request:
-    branches: ["master"]
+    branches: [ "master" ]
 
 
 permissions:
@@ -16,14 +16,11 @@ jobs:
     runs-on: ubuntu-latest
   strategy:
     matrix:
-      python-version: ["3.8"]
+      python-version: [ "3.8" ]
 
   steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
