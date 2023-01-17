@@ -10,7 +10,7 @@ packages = [
 include = ["chemcalc/elements.json"]
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
+python = "^3.9"
 rply = "^0.7.8"
 
 
