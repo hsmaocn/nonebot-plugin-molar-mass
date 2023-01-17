@@ -96,8 +96,8 @@ def _(p):
 
 
 @pg.error
-def _(token):
-    raise ValueError(f"{token.gettokentype()} was not expected.")
+def _(token: rply.Token):
+    raise ValueError(f'{token.gettokentype()} was not expected.')
 
 
 parser = pg.build()
