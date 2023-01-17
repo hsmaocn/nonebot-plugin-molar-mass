@@ -6,13 +6,23 @@
 
 # 使用方法
 
-首先安装依赖：
+本项目使用 `poetry` 进行包管理，所以先安装它：
 
 ```bash
-$ pip install -r requirements.txt
+> pip install -U poetry
 ```
 
-然后直接运行 `main.py` 就行了，输入 `exit` 或 `quit` 退出，水合物用加号 `+` 连接：
+然后安装本项目需要的包，并且使用 `poetry` 的环境来运行 `main.py`：
+
+```bash
+> poetry install
+> poetry run python main.py
+```
+
+你也可以激活 `poetry` 环境，具体方式请查询 `poetry` 的[官方文档](https://python-poetry.org/docs/)。
+
+
+输入 `exit` 或 `quit` 退出，水合物用加号 `+` 连接：
 
 ```bash
 $ python main.py
