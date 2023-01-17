@@ -7,6 +7,7 @@ if __name__ == '__main__':
             code = input('> ').strip()
         except KeyboardInterrupt:
             break
+
         if code in ('exit', 'quit'):
             break
         if code == '':
