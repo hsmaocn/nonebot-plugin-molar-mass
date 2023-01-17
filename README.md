@@ -25,7 +25,6 @@
 输入 `exit` 或 `quit` 退出，水合物用加号 `+` 连接：
 
 ```bash
-$ python main.py
 > NaOH
 40
 > H2SO4
