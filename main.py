@@ -1,4 +1,4 @@
-import calc
+import chemcalc
 
 
 if __name__ == '__main__':
@@ -14,6 +14,6 @@ if __name__ == '__main__':
             continue
 
         try:
-            print(calc.calc(code))
+            print(chemcalc.calc(code))
         except (NameError, ValueError) as e:
             print(e)

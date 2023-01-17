@@ -3,7 +3,7 @@ import json
 from typing import Union
 from pathlib import Path
 
-from rply import LexerGenerator, ParserGenerator
+from rply import ParserGenerator
 from rply.token import BaseBox
 
 
@@ -44,15 +44,6 @@ class AddExpr(Expr):
     def eval(self) -> Union[int, float]:
         return self.left.eval() + self.right.eval()
 
-
-lg = LexerGenerator()
-
-lg.ignore(r'\s+')
-lg.add('INTEGER', r'\d+')
-lg.add('ELEMENT', '[A-Z][a-z]?')
-lg.add('OPEN_PARENS', r'\(')
-lg.add('CLOSE_PARENS', r'\)')
-lg.add('ADD', r'\+')
 
 pg = ParserGenerator([
     'INTEGER', 'ELEMENT', 'OPEN_PARENS', 'CLOSE_PARENS', 'ADD'
@@ -110,11 +101,3 @@ def _(token):
 
 
 parser = pg.build()
-lexer = lg.build()
-
-
-def calc(code: str) -> Union[int, float]:
-    result = parser.parse(lexer.lex(code)).eval()
-    if isinstance(result, float) and result.is_integer():
-        return int(result)
-    return result
