@@ -7,13 +7,13 @@ from rply import LexerGenerator, ParserGenerator
 from rply.token import BaseBox
 
 
-ELEMENTS = json.loads(
+ELEMENTS: dict[str, Union[int, float]] = json.loads(
     (Path(__file__).parent / 'elements.json').read_text('utf8')
 )
 
 
 class Expr(BaseBox):
-    def eval(self) -> int:
+    def eval(self) -> Union[int, float]:
         raise NotImplementedError()
 
 
@@ -22,7 +22,7 @@ class IntegerExpr(Expr):
         self.expr = expr
         self.val = count
 
-    def eval(self) -> int:
+    def eval(self) -> Union[int, float]:
         return self.expr.eval() * self.val
 
 
@@ -30,7 +30,7 @@ class Element(Expr):
     def __init__(self, ele: str):
         self.ele = ele
 
-    def eval(self) -> int:
+    def eval(self) -> Union[int, float]:
         if self.ele not in ELEMENTS:
             raise NameError('Cannot find element ' + self.ele)
         return ELEMENTS[self.ele]
@@ -41,7 +41,7 @@ class AddExpr(Expr):
         self.left = left
         self.right = right
 
-    def eval(self) -> int:
+    def eval(self) -> Union[int, float]:
         return self.left.eval() + self.right.eval()
 
 
@@ -113,7 +113,7 @@ parser = pg.build()
 lexer = lg.build()
 
 
-def calc(code: str) -> int:
+def calc(code: str) -> Union[int, float]:
     result = parser.parse(lexer.lex(code)).eval()
     if isinstance(result, float) and result.is_integer():
         return int(result)
