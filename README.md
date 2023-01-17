@@ -15,7 +15,7 @@
 然后安装本项目需要的包，并且使用 `poetry` 的环境来运行 `main.py`：
 
 ```bash
-> poetry install
+> poetry install --only main
 > poetry run python main.py
 ```
 
