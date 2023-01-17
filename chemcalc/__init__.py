@@ -1,7 +1,7 @@
 from typing import Union
 
 from .lexer import lexer
-from .parser import parser, Expr
+from .parser import parser
 
 
 def calc(code: str) -> Union[int, float]:
