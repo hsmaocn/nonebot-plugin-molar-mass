@@ -1,6 +1,15 @@
-import rply
+import json
+
+from typing import Union
+from pathlib import Path
+
+from rply import LexerGenerator, ParserGenerator
 from rply.token import BaseBox
-from elements import ELEMENTS
+
+
+ELEMENTS = json.loads(
+    (Path(__file__).parent / 'elements.json').read_text('utf8')
+)
 
 
 class Expr(BaseBox):
@@ -36,16 +45,16 @@ class AddExpr(Expr):
         return self.left.eval() + self.right.eval()
 
 
-lg = rply.LexerGenerator()
+lg = LexerGenerator()
 
 lg.ignore(r'\s+')
 lg.add('INTEGER', r'\d+')
-lg.add('ELEMENT', '[A-Z][a-z]?[a-z]?')
+lg.add('ELEMENT', '[A-Z][a-z]?')
 lg.add('OPEN_PARENS', r'\(')
 lg.add('CLOSE_PARENS', r'\)')
 lg.add('ADD', r'\+')
 
-pg = rply.ParserGenerator([
+pg = ParserGenerator([
     'INTEGER', 'ELEMENT', 'OPEN_PARENS', 'CLOSE_PARENS', 'ADD'
 ], precedence=[
     ('left', ['ADD'])
@@ -96,7 +105,7 @@ def _(p):
 
 
 @pg.error
-def _(token: rply.Token):
+def _(token):
     raise ValueError(f'{token.gettokentype()} was not expected.')
 
 
