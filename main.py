@@ -11,4 +11,8 @@ if __name__ == '__main__':
             break
         if code == '':
             continue
-        print(calc.calc(code))
+
+        try:
+            print(calc.calc(code))
+        except (NameError, ValueError) as e:
+            print(e)
