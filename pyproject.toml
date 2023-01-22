@@ -13,12 +13,7 @@ include = ["elements.json"]
 [tool.poetry.dependencies]
 python = "^3.9"
 rply = "^0.7.8"
-nonebot2 = "^2.0.0rc2"
-
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.2.1"
-flake8 = "^6.0.0"
+nonebot2 = {extras = ["fastapi"], version = "^2.0.0rc3"}
 
 
 [build-system]
