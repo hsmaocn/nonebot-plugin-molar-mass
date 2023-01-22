@@ -1,32 +1,24 @@
 # nonebot-plugin-molar-mass
 
-这是一个帮助中学生快速计算相对分子质量的工具。
+本项目为 `Nonebot2` 插件，用来计算摩尔质量或相对分子质量。
 
 因为我每次遇到计算题都要去翻课本，然后按计算器，不胜其烦，导致了这个库的出现。
 
-如果想要
+如果想要使用 `CLI` 版本，可以切换到 `cli` 分支，其实本项目原本就是一个 `CLI` 后面改成的 `Nonebot2` 插件。
 
-# 使用方法
+# 安装
 
-本项目使用 `poetry` 进行包管理，所以先安装它：
+使用 `pip` 安装：
 
 ```bash
-> pip install -U poetry
+> pip install nonebot-plugin-molar-mass
 ```
 
-然后安装本项目需要的包，并且使用 `poetry` 的环境来运行 `main.py`：
+# 使用
 
-```bash
-> poetry install --only main
-> poetry run python main.py
+发送 `/摩尔质量 化学式` 或者 `/相对分子质量 化学式`，以下为几组输入输出的例子：
+
 ```
-
-你也可以激活 `poetry` 环境，具体方式请查询 `poetry` 的[官方文档](https://python-poetry.org/docs/)。
-
-
-输入 `exit` 或 `quit` 退出，水合物用加号 `+` 连接：
-
-```bash
 > NaOH
 40
 > H2SO4
@@ -37,11 +29,6 @@
 132
 > CuSO4+5H2O
 250
-> exit
 ```
 
-# 总结
-
-Just for fun.
-
-估计打开电脑，找到指定目录，然后运行的时间都做完好几道选择题了。
+注意，这里的斜杠指的是 `COMMAND_START`，你可以参考 Nonebot 官方文档配置这个选项。
