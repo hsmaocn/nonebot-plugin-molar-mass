@@ -1,4 +1,4 @@
-from chemcalc import calc
+from molar_mass_calc import calc
 
 
 def test_calc():

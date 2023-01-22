@@ -1,4 +1,4 @@
-import chemcalc
+import molar_mass_calc
 
 
 if __name__ == '__main__':
@@ -14,6 +14,6 @@ if __name__ == '__main__':
             continue
 
         try:
-            print(chemcalc.calc(code))
+            print(molar_mass_calc.calc(code))
         except (NameError, ValueError) as e:
             print(e)
