@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "chemcalc"
+name = "nonebot-plugin-molar-mass"
 version = "0.1.0"
-description = "A simple tool to calculate molar mass for middle school students."
+description = "A tool to calculate molar mass for middle school students."
 authors = ["kifuan <kifuan@foxmail.com>"]
 readme = "README.md"
 packages = [
-    { include = "molar_mass_calc" }
+    { include = "nonebot_plugin_molar_mass" }
 ]
 include = ["elements.json"]
 
@@ -13,6 +13,7 @@ include = ["elements.json"]
 [tool.poetry.dependencies]
 python = "^3.9"
 rply = "^0.7.8"
+nonebot2 = "^2.0.0rc2"
 
 
 [tool.poetry.group.dev.dependencies]
