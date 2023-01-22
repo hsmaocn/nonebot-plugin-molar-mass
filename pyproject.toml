@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "chemcalc"
+name = "molar-mass-calc"
 version = "0.1.0"
 description = "A simple tool to calculate molar mass for middle school students."
 authors = ["kifuan <kifuan@foxmail.com>"]
