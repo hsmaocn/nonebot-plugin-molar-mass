@@ -11,7 +11,7 @@
 使用 `pip` 安装：
 
 ```bash
-> pip install nonebot-plugin-molar-mass
+> pip install -U nonebot-plugin-molar-mass
 ```
 
 使用 `nb-cli` 安装：
