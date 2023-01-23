@@ -20,7 +20,7 @@ async def handle_receive_molar_mass(matcher: Matcher, arg: Message = CommandArg(
 @molar_mass.got('chemical', prompt='你想计算什么物质？')
 async def handle_calculate_molar_mass(chemical: str = ArgPlainText()):
     try:
-        await molar_mass.finish(str(calc_molar_mass(chemical)))
+        await molar_mass.finish(calc_molar_mass(chemical))
     except CalcException:
         logger.error(f'failed to calculate {chemical}')
         await molar_mass.reject('计算出错，请检查输入格式。\n'
