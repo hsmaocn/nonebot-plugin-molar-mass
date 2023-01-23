@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot-plugin-molar-mass"
-version = "0.2.0"
+version = "0.2.1"
 description = "A tool to calculate molar mass for middle school students."
 authors = ["kifuan <kifuan@foxmail.com>"]
 readme = "README.md"
