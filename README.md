@@ -4,7 +4,7 @@
 
 因为我每次遇到计算题都要去翻课本，然后按计算器，不胜其烦，导致了这个库的出现。
 
-如果想要使用 `CLI` 版本，可以切换到 `cli` 分支，其实本项目原本就是一个 `CLI` 后面改成的 `Nonebot2` 插件。
+可以查看本项目的 `CLI` 分支，直接使用 `cli` 版本。
 
 # 安装
 
@@ -12,6 +12,12 @@
 
 ```bash
 > pip install nonebot-plugin-molar-mass
+```
+
+使用 `nb-cli` 安装：
+
+```bash
+> nb plugin install nonebot-plugin-molar-mass
 ```
 
 # 使用
