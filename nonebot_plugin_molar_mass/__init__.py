@@ -1,25 +1,27 @@
 from nonebot import on_command, logger
-from nonebot.params import CommandArg
 from nonebot.adapters import Message
+from nonebot.params import Matcher, CommandArg, ArgPlainText
 
-from .calc import calc
+from .calc import calc_molar_mass, CalcException
+
+
+__all__ = []
 
 
 molar_mass = on_command('摩尔质量', aliases={'相对分子质量'})
 
 
 @molar_mass.handle()
-async def handle_receive_molar_mass(arg: Message = CommandArg()):
-    chemical = arg.extract_plain_text()
+async def handle_receive_molar_mass(matcher: Matcher, arg: Message = CommandArg()):
+    if arg.extract_plain_text():
+        matcher.set_arg('chemical', arg)
+
+
+@molar_mass.got('chemical', prompt='你想计算什么物质？')
+async def handle_calculate_molar_mass(chemical: str = ArgPlainText()):
     try:
-        result = calc(chemical)
-    except Exception as e:
-        logger.error(f'{e.__class__.__name__}: {e}')
-        await molar_mass.finish('计算出错，请检查输入格式。\n'
+        await molar_mass.finish(str(calc_molar_mass(chemical)))
+    except CalcException:
+        logger.error(f'failed to calculate {chemical}')
+        await molar_mass.reject('计算出错，请检查输入格式。\n'
                                 '输入例：NaOH，H2SO4，2HCl，(NH4)2SO4，CuSO4+5H2O')
-        return
-
-    await molar_mass.finish(str(result))
-
-
-__all__ = []
